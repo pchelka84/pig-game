@@ -52,6 +52,12 @@ document.querySelector(".btn-roll").addEventListener("click", function() {
   }
 });
 
+document.querySelector(".btn-hold").addEventListener("click", () => {
+  // Add Current score to Global Score
+  // Update the UI
+  // Check if player won the game
+});
+
 // document.querySelector("#current-" + activePlayer).textContent = dice;
 // document.querySelector("#current-" + activePlayer).innerHTML =
 //   "<em>" + dice + "</em>";
