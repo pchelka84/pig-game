@@ -146,13 +146,60 @@ i {
 }
 
 .btn-new {
-  top: 45px;
+  top: 30px;
 }
 .btn-roll {
   top: 403px;
 }
 .btn-hold {
   top: 467px;
+}
+
+form {
+  position: absolute;
+  top: 60px;
+  width: 250px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  text-align: center;
+  margin: 8px 0;
+}
+
+input[type="text"] {
+  width: 60%;
+  padding: 5px 10px;
+  margin: 3px 5px 3px 0;
+  box-sizing: border-box;
+  border: 2px solid salmon;
+  border-radius: 4px;
+}
+input[type="text"]:focus {
+  outline: none;
+  border: 2px solid salmon;
+  box-shadow: 0 0 0 2px rgba(255, 76, 57, 0.25);
+}
+
+input[type="button"],
+input[type="button"]:visited {
+  padding: 5px 10px;
+  margin: 3px 0;
+  box-sizing: border-box;
+  background-color: salmon;
+  border: 2px solid salmon;
+  border-radius: 4px;
+  color: #fff;
+  outline: none;
+}
+
+input[type="button"]:hover {
+  background-color: red;
+}
+
+input[type="button"]:active {
+  border: 2px solid red;
+  background-color: salmon;
+  outline: none;
 }
 
 .dice {
