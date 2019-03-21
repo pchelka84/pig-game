@@ -1,11 +1,15 @@
-var scores, roundScore, activePlayer, gamePlaying;
+var scores, roundScore, activePlayer, gamePlaying, previousDiceRoll;
 
 init();
 
 document.querySelector(".btn-roll").addEventListener("click", function() {
   if (gamePlaying) {
     // 1. Random number
-    var dice = Math.floor(Math.random() * 6) + 1;
+
+    var dice;
+    dice = Math.floor(Math.random() * 6) + 1;
+    // currentScore = document.querySelector("#current-" + activePlayer)
+    //   .textContent;
 
     // 2. Display the result
     var diceDOM = document.querySelector(".dice");
@@ -14,12 +18,41 @@ document.querySelector(".btn-roll").addEventListener("click", function() {
 
     // 3. Update the round score IF the rolled number was not a 1
     if (dice !== 1) {
-      //add score
-      roundScore += dice;
-      document.querySelector(
-        "#current-" + activePlayer
-      ).textContent = roundScore;
+      if (dice === 6 && previousDiceRoll === 6) {
+        roundScore = 0;
+        document.querySelector(
+          "#current-" + activePlayer
+        ).textContent = roundScore;
+        // console.log(
+        //   "it was two 6 in a row  - dice:" +
+        //     dice +
+        //     " previousDiceRoll: " +
+        //     previousDiceRoll
+        // );
+        nextPlayer();
+      } else {
+        previousDiceRoll = dice;
+        roundScore += dice;
+        document.querySelector(
+          "#current-" + activePlayer
+        ).textContent = roundScore;
+
+        // console.log(
+        //   "Dice roll isn't 1 and previousDiceRoll isn't 6, dice can be 6. The dice is " +
+        //     dice +
+        //     ", previousDiceRoll - " +
+        //     previousDiceRoll +
+        //     ", roundscore - " +
+        //     roundScore
+        // );
+      }
     } else {
+      // console.log(
+      //   "This is a case when dice = 1 && previousDiceRoll: " +
+      //     previousDiceRoll +
+      //     ". Dice: " +
+      //     dice
+      // );
       // change the player
       nextPlayer();
     }
@@ -34,6 +67,13 @@ document.querySelector(".btn-hold").addEventListener("click", function() {
     // Update the UI
     document.querySelector("#score-" + activePlayer).textContent =
       scores[activePlayer];
+    previousDiceRoll = 0;
+    // console.log(
+    //   "Active plaeyer global score is " +
+    //     scores[activePlayer] +
+    //     " previousDiceRoll: " +
+    //     previousDiceRoll
+    // );
 
     // Check if player won the game
     if (scores[activePlayer] >= 100) {
@@ -58,6 +98,7 @@ function nextPlayer() {
   // change the player
   activePlayer === 0 ? (activePlayer = 1) : (activePlayer = 0);
   roundScore = 0;
+  previousDiceRoll = 0;
 
   document.getElementById("current-0").textContent = "0";
   document.getElementById("current-1").textContent = "0";
@@ -75,6 +116,7 @@ function init() {
   activePlayer = 0;
   roundScore = 0;
   gamePlaying = true;
+  previousDiceRoll = 0;
 
   document.querySelector(".dice").style.display = "none";
 
