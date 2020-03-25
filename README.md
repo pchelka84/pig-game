@@ -8,6 +8,7 @@
 - The player can choose to 'Hold', which means that his ROUND score gets added to his GLOBAL score. After that, it's the next player's turn
 - The first player to reach 100 points on GLOBAL score wins the game
 - A player looses his ENTIRE score when he rolls TWO 6 in a row. After that, it's the next the next player's turn.
+- Add an input field to the HTML where payers can set the winning score, so that they can change the predefined score of 100.
 
 ![picture](img/pig-game.jpg)
 
