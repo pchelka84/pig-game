@@ -6,8 +6,7 @@ document.querySelector(".btn-roll").addEventListener("click", function() {
   if (gamePlaying) {
     // 1. Random number
 
-    var dice;
-    dice = Math.floor(Math.random() * 6) + 1;
+    var dice = Math.floor(Math.random() * 6) + 1;
     // currentScore = document.querySelector("#current-" + activePlayer)
     //   .textContent;
 
@@ -68,15 +67,17 @@ document.querySelector(".btn-hold").addEventListener("click", function() {
     document.querySelector("#score-" + activePlayer).textContent =
       scores[activePlayer];
     previousDiceRoll = 0;
-    // console.log(
-    //   "Active plaeyer global score is " +
-    //     scores[activePlayer] +
-    //     " previousDiceRoll: " +
-    //     previousDiceRoll
-    // );
+
+    var userInput = document.querySelector(".winningScore").value;
+    console.log(userInput);
+    var winningScore;
+
+    // Undefined, 0, null, or "" are coerced to false
+    // anything else is coarced to true
+    userInput ? (winningScore = userInput) : (winningScore = 100);
 
     // Check if player won the game
-    if (scores[activePlayer] >= 100) {
+    if (scores[activePlayer] >= winningScore) {
       document.querySelector("#name-" + activePlayer).textContent = "Winner!";
       document.querySelector(".dice").style.display = "none";
       document
@@ -118,6 +119,8 @@ function init() {
   gamePlaying = true;
   previousDiceRoll = 0;
 
+  // setWinningScore();
+
   document.querySelector(".dice").style.display = "none";
 
   document.getElementById("score-0").textContent = "0";
@@ -131,7 +134,8 @@ function init() {
   document.querySelector(".player-1-panel").classList.remove("winner");
   document.querySelector(".player-0-panel").classList.remove("active");
   document.querySelector(".player-1-panel").classList.remove("active");
+
   // first player is always active when a new game starts
-  // we needed to remove 'active' class to avid double 'active' on the first player
+  // we needed to remove 'active' class to avoid double 'active' on the first player
   document.querySelector(".player-0-panel").classList.add("active");
 }
