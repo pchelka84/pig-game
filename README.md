@@ -11,13 +11,13 @@
 - Add an input field to the HTML where payers can set the winning score, so that they can change the predefined score of 100.
 - Add anohter dice to the game, so that there are two dices now. The player looses his current score when one of them is a 1.
 
-![picture](img/pig-game.jpg)
+![picture](img/pig-game.JPG)
 
 ## How to Run the Game
 
 To install the game, clone or download a local copy of the game. To play, simply open index.html from any web browser.
 
-As an alternative, the game can be played on the live version: [Pig]()
+As an alternative, the game can be played on the live version: [Pig](https://pchelka84.github.io/pig-game/)
 
 ### Credits
 
